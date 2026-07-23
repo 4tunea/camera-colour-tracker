@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/colour_tracker.dir/src/main.cpp.o -o colour_tracker 

@@ -22,5 +22,5 @@ target_compile_options(
     PRIVATE
     -Wall
     -Wextra
-    -Wpendantic
+    -Wpedantic
 )
