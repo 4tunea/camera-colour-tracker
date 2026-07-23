@@ -1,0 +1,2 @@
+/home/fortuna/Documents/camera-colour-tracker/build/CMakeFiles/edit_cache.dir
+/home/fortuna/Documents/camera-colour-tracker/build/CMakeFiles/rebuild_cache.dir
