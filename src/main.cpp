@@ -36,7 +36,7 @@ int main(int argc, char* argv[]){
     cv::cvtColor(
         image,
         grayscaleImage,
-        cv::COLOR_BGR2GRAY
+        cv::COLOR_BayerGB2RGB
     );
 
     cv::imshow("Original image", image);
