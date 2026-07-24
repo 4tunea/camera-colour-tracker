@@ -10,6 +10,7 @@ void displayProgramInformation(){
     std::cout<<"Usage: colour_tracker <image_path>\n";
 }
 
+
 int main(int argc, char* argv[]){
     displayProgramInformation();
 
@@ -32,32 +33,47 @@ int main(int argc, char* argv[]){
         return 2;
     }
 
-    cv::Mat grayscaleImage;
-    cv::cvtColor(
-        image,
-        grayscaleImage,
-        cv::COLOR_RGB2GRAY
-    );
+    cv::Mat resizedImage;
 
     cv::resize(
-        grayscaleImage,
-        grayscaleImage,
+        image,
+        resizedImage,
         cv::Size(),
         0.8,
         0.8,
         cv::INTER_AREA
     );
 
-    cv::imshow("Original image", image);
-    cv::imshow("Grayscale image", grayscaleImage);
+    cv::Mat hsvImage;
+    cv::cvtColor(
+        resizedImage,
+        hsvImage,
+        cv::COLOR_BGR2HSV
+    );
 
-    cv::waitKey(0);
-    cv::destroyAllWindows();
+    cv::Mat colourMask;
+    const cv::Scalar lowerBlue{90, 210, 210};
+    const cv::Scalar upperBlue{107, 255, 255};
+    cv::inRange(
+        hsvImage,
+        lowerBlue,
+        upperBlue,
+        colourMask
+    );
 
     std::cout << "Image loaded successfully.\n";
     std::cout << "Width: " << image.cols << '\n';
     std::cout << "Height: " << image.rows << '\n';
-    std::cout << "Channels: " << image.channels() << '\n';
+    std::cout << "Channels image: " << image.channels() << '\n';
+    std::cout << "Channels hsv: " << hsvImage.channels() << '\n';
+    std::cout << "Channels mask: " << colourMask.channels() << '\n';
+
+    cv::imshow("Original image", image);
+    cv::imshow("Hsv image", hsvImage);
+    cv::imshow("Colour mask", colourMask);
+
+    cv::waitKey(0);
+    cv::destroyAllWindows();
 
     return 0;
 }
