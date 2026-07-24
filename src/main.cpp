@@ -39,6 +39,15 @@ int main(int argc, char* argv[]){
         cv::COLOR_RGB2GRAY
     );
 
+    cv::resize(
+        grayscaleImage,
+        grayscaleImage,
+        cv::Size(),
+        0.8,
+        0.8,
+        cv::INTER_AREA
+    );
+
     cv::imshow("Original image", image);
     cv::imshow("Grayscale image", grayscaleImage);
 
