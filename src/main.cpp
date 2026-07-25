@@ -42,8 +42,8 @@ int main(){
             image,
             resizedImage,
             cv::Size(),
-            0.8,
-            0.8,
+            1.3,
+            1.3,
             cv::INTER_AREA
         );
 
